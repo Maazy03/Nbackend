@@ -21,8 +21,29 @@ app.use(cors());
 
 app.post("/", (req, res) => {
   console.log("REQUEST", req.body);
-  console.log("RESPONSE", res); // <------ **Here's the issue, there's nothing here**
-  res.json({ response: "foo" });
+  let { firstNo, secondNo, operator } = req.body;
+
+  Number(firstNo);
+  Number(secondNo);
+
+  let result;
+  if (operator === "+") {
+    console.log("IF 1");
+    result = firstNo + secondNo;
+  } else if (operator === "-") {
+    console.log("IF 2");
+    result = firstNo - secondNo;
+  } else if (operator === "/") {
+    console.log("IF 3");
+    result = firstNo / secondNo;
+  } else {
+    console.log("IF 4");
+    result = firstNo * secondNo;
+  }
+
+  console.log("RESULT", result);
+
+  res.json({ response: result });
   // however, if I send res.json(req.body), the response is empty in Network tab
 });
 
