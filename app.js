@@ -23,22 +23,22 @@ app.post("/", (req, res) => {
   console.log("REQUEST", req.body);
   let { firstNo, secondNo, operator } = req.body;
 
-  let firstNumber = Number(firstNo);
-  let secondNumber = Number(secondNo);
+  //   let firstNumber = Number(firstNo);
+  //   let secondNumber = Number(secondNo);
 
   let result;
   if (operator === "+") {
     console.log("IF 1");
-    result = firstNumber + secondNumber;
+    result = firstNo + secondNo;
   } else if (operator === "-") {
     console.log("IF 2");
-    result = firstNumber - secondNumber;
+    result = firstNo - secondNo;
   } else if (operator === "/") {
     console.log("IF 3");
-    result = firstNumber / secondNumber;
+    result = firstNo / secondNo;
   } else {
     console.log("IF 4");
-    result = firstNumber * secondNumber;
+    result = firstNo * secondNo;
   }
 
   console.log("RESULT", result);
