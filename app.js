@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
+const bodyParser = require("body-parser");
+app.use(bodyParser.json());
 
 app.use(express.urlencoded({ extended: true }));
 
@@ -17,9 +19,11 @@ app.use((_, res, next) => {
 });
 app.use(cors());
 
-app.get("/", (req, res) => {
-  console.log("REQ", req, res);
-  res.json({ message: "Hello from server!" });
+app.post("/", (req, res) => {
+  console.log("REQUEST", req.body);
+  console.log("RESPONSE", res); // <------ **Here's the issue, there's nothing here**
+  res.json({ response: "foo" });
+  // however, if I send res.json(req.body), the response is empty in Network tab
 });
 
 // Start the server
