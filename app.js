@@ -18,7 +18,8 @@ app.use((_, res, next) => {
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.status(200).send("Hello server is running").end();
+  console.log("REQ", req, res);
+  res.json({ message: "Hello from server!" });
 });
 
 // Start the server
